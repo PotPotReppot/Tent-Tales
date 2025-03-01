@@ -1,0 +1,36 @@
+<%layout('layouts/boilerplate')%>
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+    <div class="card shadow-lg p-4" style="width: 30rem;">
+        <div class="card-body">
+            <h2 class="text-center fw-bold">New Campground</h2>
+            <form action="/campgrounds" method="post" novalidate class="validated-form" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" id="title" name="campground[title]" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" id="location" name="campground[location]" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="price">Price</label>
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        <input class="form-control" type="number" id="price" name="campground[price]" required>
+                        <span class="input-group-text">.00</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" id="description" name="campground[description]" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Choose Image(s)</label>
+                    <input class="form-control" type="file" id="formFile" name="images" multiple accept="image/*">
+                </div>
+                <button class="btn btn-success w-100" type="submit">Create Campground</button>
+            </form>
+            <a class="btn btn-warning w-100 mt-3" href="/campgrounds">All Campgrounds</a>
+        </div>
+    </div>
+</div>
