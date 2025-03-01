@@ -27,8 +27,7 @@ const mongoSanitize=require('express-mongo-sanitize');
 const helmet=require('helmet');
 const MongoDBStore=require('connect-mongo');
 
-const dbUrl='mongodb://127.0.0.1:27017/yelp-camp'
-//const dbUrl=process.env.DB_URL;
+const dbUrl=process.env.DB_URL;
 mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to MongoDB');
@@ -190,6 +189,7 @@ app.use((err, req, res, next) => {
     res.status(status).render('campgrounds/error.ejs',{err});
 });
 
-app.listen(3000,()=>{
-    console.log("LISTENING TO PORT 3000");
+const port=process.env.PORT || 3000;
+app.listen(port,()=>{
+    console.log(`LISTENING TO PORT {port}`);
 })
